@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Crud1.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Crud1.Services
 {
@@ -8,5 +9,6 @@ namespace Crud1.Services
         {
             
         }
+        public DbSet<Receipt> receipts { get; set; }
     }
 }
