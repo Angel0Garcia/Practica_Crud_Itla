@@ -18,7 +18,7 @@ namespace Crud1.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Order()
         {
             return View();
         }

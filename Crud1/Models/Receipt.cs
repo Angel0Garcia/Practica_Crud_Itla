@@ -7,5 +7,6 @@
         public double price { get; set; }
         public string description { get; set; }
         public double total { get; set; }
+        public DateTime date { get; set; }
     }
 }
