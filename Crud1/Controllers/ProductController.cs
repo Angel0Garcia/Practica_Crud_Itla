@@ -30,10 +30,25 @@ namespace Crud1.Controllers
             {
             return View(productDto);
             }
-            return RedirectToAction("Index", "Product");
-            
 
+            //saving the product
+            Product product = new Product()
+            {
+                pro_name = productDto.pro_name,
+                pro_price = productDto.pro_price,
+                pro_description = productDto.pro_description
+            };
+
+            context.products.Add(product);
+            context.SaveChanges();
+
+            return RedirectToAction("Index", "Product");
+
+            
         }
+        
+
+      
 
         
 
