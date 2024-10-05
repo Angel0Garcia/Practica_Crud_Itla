@@ -10,5 +10,6 @@ namespace Crud1.Services
             
         }
         public DbSet<Receipt> receipts { get; set; }
+        public DbSet<Product> products { get; set; }
     }
 }

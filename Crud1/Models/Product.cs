@@ -1,8 +1,12 @@
-﻿namespace Crud1.Models
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+
+namespace Crud1.Models
 {
     public class Product
     {
-        public double pro_id {  get; set; }
+        [Key]
+        public double Pro_id {  get; set; }
         public string pro_name { get; set; }
         public double pro_price { get; set; }
         public string pro_description { get; set; }
