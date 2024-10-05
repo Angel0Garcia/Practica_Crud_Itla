@@ -1,4 +1,5 @@
-﻿using Crud1.Services;
+﻿using Crud1.Models;
+using Crud1.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Crud1.Controllers
@@ -15,10 +16,26 @@ namespace Crud1.Controllers
             var products = context.products.OrderByDescending(p => p.Pro_id).ToList();
             return View(products);
         }
+
+        [HttpGet]
         public IActionResult Create()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(ProductDto productDto)
+        {
+            if (!ModelState.IsValid)
+            {
+            return View(productDto);
+            }
+            return RedirectToAction("Index", "Product");
+            
 
         }
+
+        
 
     }
 }

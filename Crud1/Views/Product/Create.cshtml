@@ -2,4 +2,42 @@
 @{
 }
 
+<div class="row">
+    <div class="col-md-8 mx-auto rounded border-danger p-3">
+        <h2 class="text-center md-5">Producto Nuevo</h2>
 
+
+        <form method="post" enctype="multipart/form-data">
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Nombre</label>
+                <div>
+                    <input class="form-control" asp-for="pro_name"/>
+                    <span asp-validation-for="pro_name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Precio</label>
+                <div>
+                    <input class="form-control" asp-for="pro_price" />
+                    <span asp-validation-for="pro_price" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Detalles</label>
+                <div>
+                    <textarea class="form-control" asp-for="pro_description"></textarea> 
+                    <span asp-validation-for="pro_description" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="offset-sm-4 col-sm-4 d-grid">
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+                </div>
+                <div class="col-sm-4 d-grid">
+                    <a class="btn btn-outline-primary" asp-controller="Product" asp-action="Index" role="button">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
