@@ -31,9 +31,14 @@ namespace Crud1.Controllers
             return View(productDto);
             }
 
+            //increase the id of the nre product added
+            int maxId = (int)context.products.Max(p => p.Pro_id);
+
+
             //saving the product
             Product product = new Product()
             {
+                Pro_id = maxId + 1,
                 pro_name = productDto.pro_name,
                 pro_price = productDto.pro_price,
                 pro_description = productDto.pro_description
