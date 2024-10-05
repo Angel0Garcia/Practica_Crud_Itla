@@ -12,8 +12,13 @@ namespace Crud1.Controllers
         }
         public IActionResult Index()
         {
-            var products = context.products.ToList();
+            var products = context.products.OrderByDescending(p => p.Pro_id).ToList();
             return View(products);
         }
+        public IActionResult Create()
+        {
+
+        }
+
     }
 }
