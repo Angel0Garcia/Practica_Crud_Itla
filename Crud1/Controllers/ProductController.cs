@@ -74,11 +74,51 @@ namespace Crud1.Controllers
             return View(produtDto);
         }
 
-        
+        [HttpPost]
+        public IActionResult Edit(int id, ProductDto productDto)
+        {
+            var product = context.products.Find(id);
 
-      
+            if (product == null) 
+            {
+                return RedirectToAction("Index", "Product");
+            }
 
-        
+            if (!ModelState.IsValid)
+            {
+                ViewData["ProductId"] = product.Pro_id;
+                return View(productDto);
+            }
+
+            product.pro_name = productDto.pro_name;
+            product.pro_price = productDto.pro_price;
+            product.pro_description = productDto.pro_description;
+
+            context.SaveChanges();
+
+            return RedirectToAction("Index", "Product");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var product = context.products.Find(id);
+
+            if (product == null)
+            {
+                return RedirectToAction("Index", "Product");
+            }
+
+
+
+        }
+
+
+
+
+
+
+
+
 
     }
 }
