@@ -5,41 +5,49 @@
 @{
     ViewData["Title"] = "Productos";
 }
-<h1 class="text-center">@ViewData["Title"]</h1>
 
-<div class="row mb-5">
+<div class="m-1 p-2 rounded-3 shadow-sm border text">
+    <h1 class="text-center">@ViewData["Title"]</h1>
+</div>
+
+
+<div class="row mb-2 pt-5">
     <div class="col">
-        <a class="btn btn-primary" asp-controller="Product" asp-action="Create">Nuevo Producto</a>
+        <a class="btn btn-primary pt-2" asp-controller="Product" asp-action="Create">Nuevo Producto</a>
     </div>
     <div class="col">
     </div>
 </div>
 
 
-<table class="table">
-    <thead>
-        <tr>
-            <td>Codigo</td>
-            <td>Nombre</td>
-            <td>Precio</td>
-            <td>Detalles</td>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var product in Model)
-        {
+<div class="table-responsive rounded-3 shadow-sm" style="background-color: #E9E7E2;">
+    <table class="table table-bordered table-striped">
+            <thead>
             <tr>
-                <td>@product.Pro_id</td>
-                <td>@product.pro_name</td>
-                <td>@product.pro_price</td>
-                <td>@product.pro_description</td>
-                <td style="white-space:nowrap">
-                    <a class="btn btn-primary btn-warning" asp-controller="Product" asp-action="Edit"
-                       asp-route-id="@product.Pro_id">Edit</a>
-                    <a class="btn btn-primary btn-danger" asp-controller="Product" asp-action="Delete"
-                       asp-route-id="@product.Pro_id" onclick="return confirm('¿Estas seguro?')">Delete</a>
-                </td>
+                <td class="text-center">Codigo</td>
+                <td class="text-center">Nombre</td>
+                <td class="text-center">Precio</td>
+                <td class="text-center">Detalles</td>
+                <td class="text-center">Opciones</td>
+
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Pro_id</td>
+                    <td>@product.pro_name</td>
+                    <td>@product.pro_price</td>
+                    <td>@product.pro_description</td>
+                    <td style="white-space:nowrap">
+                        <a class="btn btn-primary btn-warning" asp-controller="Product" asp-action="Edit"
+                           asp-route-id="@product.Pro_id">Editar</a>
+                        <a class="btn btn-primary btn-danger" asp-controller="Product" asp-action="Delete"
+                           asp-route-id="@product.Pro_id" onclick="return confirm('¿Estas seguro?')">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
