@@ -13,7 +13,8 @@ namespace Crud1.Controllers
         }
         public IActionResult Index()
         {
-            var products = context.products.OrderByDescending(p => p.Pro_id).ToList();
+            System.Linq.Expressions.Expression<Func<Product, int>> keySelector = p => p.Pro_id;
+            var products = context.products.OrderByDescending(keySelector).ToList();
             return View(products);
         }
 
@@ -31,8 +32,8 @@ namespace Crud1.Controllers
             return View(productDto);
             }
 
-            //increase the id of the nre product added
-            int maxId = (int)context.products.Max(p => p.Pro_id);
+            //increase the id of the product added
+            int maxId = context.products.Max(p => p.Pro_id);
 
 
             //saving the product
@@ -49,8 +50,30 @@ namespace Crud1.Controllers
 
             return RedirectToAction("Index", "Product");
 
-            
         }
+
+        public IActionResult Edit(int id)
+        { 
+            var product = context.products.Find(id);
+
+            if (product == null) 
+            {
+                return RedirectToAction("Index", "Product");
+            }
+
+            var produtDto = new ProductDto()
+            {
+                pro_name=product.pro_name,
+                pro_price=product.pro_price,
+                pro_description=product.pro_description
+            };
+
+            ViewData["ProductId"] = product.Pro_id;
+
+
+            return View(produtDto);
+        }
+
         
 
       
