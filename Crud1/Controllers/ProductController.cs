@@ -108,8 +108,9 @@ namespace Crud1.Controllers
                 return RedirectToAction("Index", "Product");
             }
 
-
-
+            context.products.Remove(product);
+            context.SaveChanges();
+            return RedirectToAction("Index", "Product");
         }
 
 
